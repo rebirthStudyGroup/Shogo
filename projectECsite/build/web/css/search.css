@@ -1,0 +1,24 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2017/09/30, 15:54:26
+    Author     : guest1Day
+*/
+
+.main_container{
+    background-image: url(../Image/regal.png);
+    margin: 0 auto;
+    margin-top: 125px;
+    width:800px;
+    border-style: solid;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.search_box{
+    width: 615px;
+    margin:10px auto;
+}
