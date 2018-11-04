@@ -1,0 +1,120 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2017/10/09, 17:05:38
+    Author     : shogo
+*/
+
+.userCtrl{
+    border-style: solid;
+    border-radius: 10px;
+    background-image: url(../Image/regal.png);
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.userInfo{
+    text-align: left;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.change_button{
+    width: 100%;
+    height: 24px;
+    padding: 14px 0px;
+}
+
+.delete_bottun{
+   float: left;
+   width: 50%;
+   text-align: right;
+}
+
+.update_bottun{
+   float: right;
+   width: 50%;
+   text-align: left;
+}
+
+.mypageTable{
+    border: solid 1px;
+    margin: 0 auto;
+    width: auto;
+    border-collapse: collapse;
+}
+
+.column1{
+    border: solid 1px;
+    width: 110px;
+}
+.column2{
+    border: solid 1px;
+    width: auto;
+}
+
+/* ↑　マイページ情報 */
+/* ↓　カート情報 */
+
+
+.star-rating{
+  position: relative;
+  width: 5em;
+  height: 1em;
+}
+.star-rating-front{
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #ffcc33;
+}
+.star-rating-back{
+  color: #ccc;
+}
+.ratingNum{
+    font-size: 14px;
+    margin-left:5px;
+}
+
+/*　↑カート情報　*/
+/*　↓検索画面　*/
+
+a:link{color:black; text-decoration: none;}
+a:visited{color:black; text-decoration: none;}
+a:hover{color: black ; text-decoration: none;}
+a:active{color: black ; text-decoration: none;}
+
+.button{
+    margin-bottom: 0px;
+}
+
+.nextToSearch{
+    border-style: solid;
+    border-radius: 30px;
+    display: block;
+    width: 120px;
+    text-align: center;
+    margin:30px auto;
+    padding: 10px;
+    background-image: url(../Image/regal.png);
+}
+.nextToBuyHis{
+    border-style: solid;
+    border-radius: 30px;
+    display: block;
+    width: 160px;
+    text-align: center;
+    margin:30px auto;
+    padding: 10px;
+    background-image: url(../Image/regal.png);
+}
+
+.nextToBuy{
+    margin-left: 15px;
+}
