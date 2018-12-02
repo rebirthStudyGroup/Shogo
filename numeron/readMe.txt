@@ -1,24 +1,26 @@
-yƒQ[ƒ€ƒ‹[ƒ‹z
-3ƒPƒ^‚Ì‚P`‚X‚Ü‚Å‚Ì”—ñ‚ğ“–‚Ä‚éƒQ[ƒ€B
-ƒ`ƒƒƒ“ƒX‚Í10‰ñ(very easy)B
-‰E‰º‚Ì‚P`‚X‚Ü‚Å‚Ì”š‚ğ‘I‚ÑAŒˆ‚Ü‚Á‚½‚çCALLƒ{ƒ^ƒ“A
-‘O‚Ì”š‚ğC³‚µ‚½‚¢ê‡‚ÍARESETƒ{ƒ^ƒ“‚ğ‰Ÿ‚·B
-3ƒPƒ^‘S‚Ä“ü—Í‚µ‚½Œã‚ÉACALLƒ{ƒ^ƒ“‚ğ‰Ÿ‚·‚ÆAŒ‹‰Ê”»’èB
+ã€ã‚²ãƒ¼ãƒ ãƒ«ãƒ¼ãƒ«ã€‘
+3ã‚±ã‚¿ã®ï¼‘ï½ï¼™ã¾ã§ã®æ•°åˆ—ã‚’å½“ã¦ã‚‹ã‚²ãƒ¼ãƒ ã€‚
+ãƒãƒ£ãƒ³ã‚¹ã¯10å›(very easy)ã€‚
+å³ä¸‹ã®ï¼‘ï½ï¼™ã¾ã§ã®æ•°å­—ã‚’é¸ã³ã€æ±ºã¾ã£ãŸã‚‰CALLãƒœã‚¿ãƒ³ã€
+å‰ã®æ•°å­—ã‚’ä¿®æ­£ã—ãŸã„å ´åˆã¯ã€RESETãƒœã‚¿ãƒ³ã‚’æŠ¼ã™ã€‚
+3ã‚±ã‚¿å…¨ã¦å…¥åŠ›ã—ãŸå¾Œã«ã€CALLãƒœã‚¿ãƒ³ã‚’æŠ¼ã™ã¨ã€çµæœåˆ¤å®šã€‚
 
-EATEEE“ü—Í‚µ‚½”š‚Ì’l‚ÆêŠ‚ª“š‚¦‚Æˆê’v‚µ‚Ä‚¢‚é”
-BITEEEE“ü—Í‚µ‚½”š‚Ì’l‚Ì‚İ‚ª“š‚¦‚Æˆê’v‚µ‚Ä‚¢‚é”
-@@@@@(EAT‚ÉŠÜ‚Ü‚ê‚é”š‚Í‘ÎÛŠO)
+EATãƒ»ãƒ»ãƒ»å…¥åŠ›ã—ãŸæ•°å­—ã®å€¤ã¨å ´æ‰€ãŒç­”ãˆã¨ä¸€è‡´ã—ã¦ã„ã‚‹æ•°
+BITEãƒ»ãƒ»ãƒ»å…¥åŠ›ã—ãŸæ•°å­—ã®å€¤ã®ã¿ãŒç­”ãˆã¨ä¸€è‡´ã—ã¦ã„ã‚‹æ•°
+ã€€ã€€ã€€ã€€ã€€(EATã«å«ã¾ã‚Œã‚‹æ•°å­—ã¯å¯¾è±¡å¤–)
 
 
-y“®ìŠÂ‹«z
+ã€å‹•ä½œç’°å¢ƒã€‘
 Python 3.7
 Kivy 1.10.1
 
-yC³•K{‰ÓŠz
+ã€ä¿®æ­£å¿…é ˆç®‡æ‰€ã€‘
 Lib/site-packages/kivy/lang/builder.py
 
-¦•ÏX‘O
-™™START
+kviy1.10.1ã§ã¯276è¡Œç›®ã‚ãŸã‚Š
+
+â€»å¤‰æ›´å‰
+â˜†â˜†START
     def load_file(self, filename, **kwargs):
         '''Insert a file into the language builder and return the root widget
         (if defined) of the kv file.
@@ -44,10 +46,10 @@ Lib/site-packages/kivy/lang/builder.py
                     data = data[len(codecs.BOM_UTF8):]
 
         return self.load_string(data, **kwargs)
-™™END
+â˜†â˜†END
 
-¦•ÏXŒã
-™™START
+â€»å¤‰æ›´å¾Œ
+â˜†â˜†START
 def load_file(self, filename, encoding=None, **kwargs):
         '''Insert a file into the language builder and return the root widget
         (if defined) of the kv file.
@@ -97,6 +99,6 @@ def load_file(self, filename, encoding=None, **kwargs):
                 if data.startswith(codecs.BOM_UTF8):
                     data = data[len(codecs.BOM_UTF8):]
 
-        return self.load_string(data, **kwargs)    # ƒCƒ“ƒfƒ“ƒgˆê‚ÂŒ¸‚ç‚·
+        return self.load_string(data, **kwargs)    # ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆä¸€ã¤æ¸›ã‚‰ã™
 
-™™END
+â˜†â˜†END
