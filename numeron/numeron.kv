@@ -1,0 +1,312 @@
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+
+#WholeScreenRoot
+
+#<WholeScreenRoot>
+#    WholeScreen
+#        id: wholeScreen
+
+<WholeScreen>:
+# 画面全体のレイアウト
+
+    id: wholeScreen
+    BoxLayout:
+        orientation: "horizontal"
+        size: root.size
+
+        canvas.before:
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: root.get_enemy_backgroundimage()
+
+        BoxLayout:
+        #  画面左側のボックス
+            size_hint_x: 0.5
+            orientation: "vertical"
+            BoxLayout:
+                size_hint_y: 0.3
+
+                Image:
+                    id: enemyImage
+                    source: root.get_enemyImg(3)
+
+            BoxLayout:
+                size_hint_y: 0.7
+                id: history
+                canvas.before:
+                    Color:
+                        rgba: get_color_from_hex("#99ff99")
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+                GridLayout:
+
+                    cols: 3
+                    rows: 11
+
+                    padding:5
+                    spacing:5
+
+                    Item:
+                        text: "番号"
+                    Item:
+                        text: "EAT"
+                    Item:
+                        text: "BITE"
+
+                    Item:
+                        id: item1
+                        text: "-"
+                    Item:
+                        id: eat1
+                        text: "-"
+                    Item:
+                        id: bite1
+                        text: "-"
+
+                    Item:
+                        id: item2
+                        text: "-"
+                    Item:
+                        id: eat2
+                        text: "-"
+                    Item:
+                        id: bite2
+                        text: "-"
+
+                    Item:
+                        id: item3
+                        text: "-"
+                    Item:
+                        id: eat3
+                        text: "-"
+                    Item:
+                        id: bite3
+                        text: "-"
+
+                    Item:
+                        id: item4
+                        text: "-"
+                    Item:
+                        id: eat4
+                        text: "-"
+                    Item:
+                        id: bite4
+                        text: "-"
+
+                    Item:
+                        id: item5
+                        text: "-"
+                    Item:
+                        id: eat5
+                        text: "-"
+                    Item:
+                        id: bite5
+                        text: "-"
+
+                    Item:
+                        id: item6
+                        text: "-"
+                    Item:
+                        id: eat6
+                        text: "-"
+                    Item:
+                        id: bite6
+                        text: "-"
+
+                    Item:
+                        id: item7
+                        text: "-"
+                    Item:
+                        id: eat7
+                        text: "-"
+                    Item:
+                        id: bite7
+                        text: "-"
+
+                    Item:
+                        id: item8
+                        text: "-"
+                    Item:
+                        id: eat8
+                        text: "-"
+                    Item:
+                        id: bite8
+                        text: "-"
+
+                    Item:
+                        id: item9
+                        text: "-"
+                    Item:
+                        id: eat9
+                        text: "-"
+                    Item:
+                        id: bite9
+                        text: "-"
+
+                    Item:
+                        id: item10
+                        text: "-"
+                    Item:
+                        id: eat10
+                        text: "-"
+                    Item:
+                        id: bite10
+                        text: "-"
+
+        BoxLayout:
+            size_hint_x: 0.5
+            orientation: 'vertical'
+
+
+            BoxLayout:
+                size_hint_y: 0.3
+                GridLayout:
+
+                    padding: 10,10,10,10
+                    spacing: 5
+
+                    cols: 3
+                    BoxLayout:
+                        MyCard:
+                            id: numberFirst
+                            text:root.get_numbers(1)
+
+                            canvas.before:
+                                Rectangle:
+                                    pos: self.pos
+                                    size: self.size
+                                    source: root.get_cardBaseImg()
+
+                    BoxLayout:
+                        MyCard:
+                            id: numberSecond
+                            text:root.get_numbers(2)
+
+                            canvas.before:
+                                Rectangle:
+                                    pos: self.pos
+                                    size: self.size
+                                    source: root.get_cardBaseImg()
+                    BoxLayout:
+                        MyCard:
+                            id: numberThird
+                            text:root.get_numbers(3)
+
+                            canvas.before:
+                                Rectangle:
+                                    pos: self.pos
+                                    size: self.size
+                                    source: root.get_cardBaseImg()
+
+            BoxLayout:
+                size_hint_y: 0.7
+                GridLayout:
+
+                    cols: 3
+                    rows: 4
+
+                    padding: 10
+                    spacing: 5
+
+                    NumberButton:
+                        text:"7"
+                    NumberButton:
+                        text:"8"
+                    NumberButton:
+                        text:"9"
+
+                    NumberButton:
+                        text:"4"
+                    NumberButton:
+                        text:"5"
+                    NumberButton:
+                        text:"6"
+
+                    NumberButton:
+                        text:"1"
+                    NumberButton:
+                        text:"2"
+                    NumberButton:
+                        text:"3"
+
+                    DeleteButton:
+                        text:"RESET"
+                    NumberButton:
+                        text:"0"
+                    CallButton:
+                        text:"CALL"
+
+<NumberButton@Button>:
+    font_size: "30dp"
+    bold: True
+    on_press: app.root.children[0].children[0].set_numbers(self.text)
+#    on_press: app.root.set_numbers(self.text)
+    background_color: get_color_from_hex("#ff99cc")
+
+<DeleteButton@Button>:
+    font_size: "30dp"
+    bold: True
+    on_press: app.root.children[0].children[0].delete()
+    background_color: get_color_from_hex("#3333FF")
+
+<CallButton@Button>:
+    font_size: "30dp"
+    bold: True
+    on_press: app.root.children[0].children[0].next()
+    background_color: get_color_from_hex("#3333FF")
+
+<MyCard@Label>:
+    color: get_color_from_hex("#83481F")
+    font_size: 30
+
+<Item@Label>
+    color: get_color_from_hex("#000000")
+    font_size: 30
+
+<Result>:
+    BoxLayout:
+        size: root.size
+        orientation: 'vertical'
+
+        BoxLayout:
+            size_hint_y: 0.7
+            id: resultEnemyImage
+            BoxLayout:
+                Image:
+                    id: result_image
+                    source: root.get_enemyImg()
+                    canvas.before:
+                        Rectangle:
+                            id: result_back_image
+                            size: self.size
+                            pos: self.pos
+                            source: root.get_enemyImgBack()
+        BoxLayout:
+            size_hint_y: 0.3
+            canvas.before:
+                Color:
+                    rgba: get_color_from_hex("#FFFFFF")
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            BoxLayout:
+                Image:
+                    size_hint_x: 0.8
+                    id: result
+                    source: root.get_resultImage()
+
+                Button:
+                    size_hint_x: 0.2
+                    text: "BACK"
+                    on_press: root.reset()
+
+
+
+
+
+# ボタンクリックで指定した番号の数字を変更できるようにしたい
+
