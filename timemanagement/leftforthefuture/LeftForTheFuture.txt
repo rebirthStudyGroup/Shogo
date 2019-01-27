@@ -1,0 +1,39 @@
+
+
+残課題
+１．リサイズした時に、アクションバー と 下のボックスレイアウトが被ってしまう
+２．タスクの実施時間を可視化して分析する
+３．計測画面にてカードをクリックしたら、ストップウォッチがリセットされ、
+　　ストップウォッチを計測した結果がカードに即時反映される
+　　計測画面のカードをクリックしたら、LAP 表示箇所にカード名を記載するようにする
+
+
+気づき
+１．kvファイルへのアクセス
+root.ids.stop_watch.text = 'sample'
+２．widgetだけでは画面一杯にコンテンツを表示できない
+以下ではだめ。基本的にBoxLayoutを使用する
+py:
+ Tset(Widget):
+     pass
+
+kv:
+Test:
+    size: self.size
+    pos: self.pos
+    BoxLayout:
+        size: self.size
+        pos: self.pos
+
+
+
+ids['stop_watch']みたいなアクセスじゃなくても可能だった
+
+学習内容
+
+１．Clock.schedule_intarvalによる周期的な関数の実行
+２．ListView -> adapter -> ListAdapter : 一覧表示(kv)
+３．ActionBar ：上部固定表内容の表示(画面遷移させたくないが今はしてしまうため無駄が多い)(kv)
+４．Spiner ：リスト形式の表示(選択値の移送については検討の余地あり)(kv)
+５．TextInput ：文字入力値の受取
+６．ScreenManager ：画面遷移と画面間データの共有

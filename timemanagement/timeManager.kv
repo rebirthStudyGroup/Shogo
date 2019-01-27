@@ -1,0 +1,282 @@
+#: import main main
+#: import ListAdapter kivy.adapters.listadapter.ListAdapter
+#: import sc const.ScreenInfoConst.ScreenConst
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+#: import ListItemButton kivy.uix.listview.ListItemButton
+
+
+<MakeNew>
+    title_input: title_input
+    purpose_input: purpose_input
+    overview_input: overview_input
+    card_name_input: card_name_input
+    category1_input: category1_input
+    category2_input: category2_input
+    orientation: sc.vertical()
+    ActionBarFixed:
+
+    # 新規タイトルのインプット画面
+    BoxLayout:
+        orientation: sc.vertical()
+        size_hint_y: 1
+        padding: 10
+
+        # タイトル登録画面の表示
+        BoxLayout:
+            size_hint_y: 1
+            OrangeLabel:
+                text: "新規タイトル登録　*英数字は全角で入力する"
+
+        # 編集中の日本語を表示
+        BoxLayout:
+            size_hint_y: 1
+            OrangeLabel:
+
+
+        # タイトル名インプットゾーン
+        BoxLayout:
+            size_hint_y: 1
+            OrangeLabel:
+                size_hint_x: 0.2
+                text: "名前"
+            TextInput:
+                size_hint_x: 0.6
+                id: title_input
+            Button:
+                size_hint_x: 0.2
+                text: "新規登録"
+                on_press: root.register_new_title()
+
+        # 目的インプットゾーン
+        BoxLayout:
+            size_hint_y: 1
+            OrangeLabel:
+                size_hint_x: 0.2
+                text: "目的"
+            TextInput:
+                multiline: True
+                size_hint_x: 0.8
+                id: purpose_input
+
+        # 概要インプットゾーン
+        BoxLayout:
+            size_hint_y: 1
+            OrangeLabel:
+                size_hint_x: 0.2
+                text: "概要"
+            TextInput:
+                size_hint_x: 0.8
+                id: overview_input
+
+    # 新規カードの登録画面
+    BoxLayout:
+        orientation: sc.vertical()
+        size_hint_y: 1
+        padding: 10
+
+        # 新規カード登録画面の表示
+        BoxLayout:
+            size_hint_y: 1
+            BlueLabel:
+                text: "新規カード登録"
+
+        # タイトル名インプットゾーン
+        BoxLayout:
+            size_hint_y: 1
+            BlueLabel:
+                size_hint_x: 0.2
+                text: "カード名"
+            WhiteSpinner:
+                id: card_name_input
+                text: '{0:20}'.format(root.title_list()[0])
+                values: ['{0:<20}'.format(x) for x in root.title_list()]
+            Button:
+                size_hint_x: 0.2
+                text: "新規登録"
+                on_press: root.register_new_card()
+
+        # カテゴリー1インプットゾーン
+        BoxLayout:
+            size_hint_y: 1
+            BlueLabel:
+                size_hint_x: 0.2
+                text: "カテゴリー1"
+            TextInput:
+                size_hint_x: 0.8
+                id: category1_input
+
+        # カテゴリー2インプットゾーン
+        BoxLayout:
+            size_hint_y: 1
+            BlueLabel:
+                size_hint_x: 0.2
+                text: "カテゴリー2"
+            TextInput:
+                size_hint_x: 0.8
+                id: category2_input
+
+<Master>
+    orientation: sc.vertical()
+    card_list_select: card_list_selection
+    ActionBarFixed:
+        size_hint_y: 0.5
+
+    BoxLayout:
+        size_hint_y: 0.5
+        orientation: sc.horizontal()
+        Label:
+            size_hint_x: 0.5
+            id: delete_target_card
+            text: ""
+
+        Button:
+            size_hint_x: 0.25
+            text: '反映'
+            on_press: root.set_title_output()
+
+        Button:
+            size_hint_x: 0.25
+            text: '削除(未実装)'
+            on_press: root.delete_card()
+
+    # カードの一覧を表示する
+    BoxLayout:
+        size_hint_y: 5
+        ListView:
+            id: card_list_selection
+            adapter:
+
+                ListAdapter(data=[], cls=main.MasterButton, args_converter=main.Master.args_converter)
+
+
+<StopWatch>
+    name: '繰り返しストップウォッチ'
+    orientation: sc.vertical()
+    on_enter: root.update_card_list()
+    ActionBarFixed:
+    BoxLayout: # 上下2つに分けた時の上部
+        orientation: sc.vertical()
+        padding: 10
+
+        # 計測時間を表示するラベル
+        Label:
+            size_hint_y: 1
+            id: stop_watch_repr
+            font_size: 50
+            text: '[b]00:00:00[/b]'
+
+        # Start-Stop、Reset、Lapボタンを表示するボックス
+        BoxLayout:
+            size_hint_y: 3
+            orientation: sc.horizontal()
+            padding: 20
+            spacing: 20
+
+            Button:
+                size_hint_y: 1
+                id: start_stop
+                text: 'Start'
+                on_press: root.start_stop()
+
+            Button:
+                size_hint_y: 1
+                id: reset
+                text: 'Reset'
+                on_press: root.reset()
+
+#            Button:
+#                size_hint_y: 1
+#                id: lap
+#                text: 'Lap'
+#                on_press: root.record_lap()
+        # 処理対象のカードを表示する
+        BoxLayout:
+            size_hint_y: 1
+            Label:
+                id: this_card
+                font_size: 10
+                markup: True
+                text: '-'
+
+    BoxLayout: # 上下2つに分けた時の下部
+
+        ListView:
+            id: card_list_view
+            adapter:
+                ListAdapter(data=[], cls=main.StopWatchCardButton, args_converter=main.Master.args_converter)
+
+<StopWatchCardButton>
+    text_size: self.size
+    font_size: 12
+    halign: 'left'
+
+    text: self.get_card()
+
+    height: "45dp"
+    size_hint_y: None
+    on_press: app.root.update_target_card(self.get_card())
+
+<MasterButton>
+    text_size: self.size
+    font_size: 12
+    halign: 'left'
+
+    text: self.get_card()
+
+    height: "45dp"
+    size_hint_y: None
+    on_press: app.root.set_delete_card(self.get_card())
+
+
+<ActionBarFixed@BoxLayout>
+    orientation: 'horizontal'
+    size_hint_y: 0.5
+    ActionBar:
+        pos_hint: {'top': 1}
+        ActionView:
+            ActionPrevious:
+                title: sc.action_bar()
+                with_previous: False
+
+            ActionButton:
+                text: "make_new"
+
+                on_press: app.root.load_slide_for_make_new()
+
+            ActionButton:
+                text: "master"
+
+                on_press: app.root.load_slide_for_master()
+
+            ActionButton:
+                text: "stop_watch"
+
+                on_press: app.root.load_slide_for_stop_watch()
+
+<BlueLabel@Label>
+    canvas.before:
+        Color:
+            rgba: get_color_from_hex("#00004d")
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<OrangeLabel@Label>
+    canvas.before:
+        Color:
+            rgba: get_color_from_hex("#0f4d00")
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<WhiteSpinner@Spinner>
+    size_hint_x: 0.6
+    halign: 'center'
+    valign: 'middle'
+    text_size: self.size
+    canvas.before:
+        Color:
+            rgba: get_color_from_hex("#000000")
+        Rectangle:
+            size: self.size
+            pos: self.pos
